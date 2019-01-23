@@ -38,3 +38,7 @@ $ hexo deploy
 More info: [Deployment](https://hexo.io/docs/deployment.html)
 
 ![ttt](https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3428750493,2336333813&fm=85&app=63&f=JPEG?w=121&h=75&s=A1B45C948C11E9C60C04190903003098)
+
+![ttt](https://sevencho.github.io/uploads/assets/package_live2d.png)
+
+![ttt](https://yixiuer.oss-cn-shanghai.aliyuncs.com/images/speed-up-hexo.png)
