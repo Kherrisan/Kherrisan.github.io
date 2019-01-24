@@ -1,5 +1,6 @@
 ---
 title: Hello World
+copyright: 
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
@@ -36,7 +37,3 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
-
-![大图](https://kherrisanbucketone.oss-cn-shanghai.aliyuncs.com/2019-01-23-121710.jpg)
-
-![超级大图](https://kherrisanbucketone.oss-cn-shanghai.aliyuncs.com/2019-01-23-123408.jpg)
