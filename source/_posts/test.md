@@ -1,6 +1,6 @@
 ---
 title: 这是一个测试页
-copyright: 
+copyright: true
 date: 2019-01-24 13:46:26
 tags:
     - 测试
@@ -21,6 +21,8 @@ categories: 测试
 ## 二级标题
 
 ### 三级标题
+
+<!-- more -->
 
 #### 四级标题
 
