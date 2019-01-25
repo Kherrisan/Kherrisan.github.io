@@ -9,6 +9,8 @@ date: 2017-07-13 11:22:11
 tags:
 ---
 
+<!-- more -->
+
 ```null
 class Greeter{
     greeting:string;

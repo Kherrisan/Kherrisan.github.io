@@ -18,6 +18,8 @@ HTTP协议应该是如今互联网中使用范围最广的协议了。现在对H
 
 HTTP协议全名为超文本传输协议，英文名为Hypertext Transfer Protocol，不出意外也是一个外国人发明的网络传输协议。这个协议大概在1960年左右被构思出来，后来经过多方合作，不断地被修改和完善，最终进入RFC，成为互联网标准之一，应该是和TCP协议重要性相当的。  
 
+<!-- more -->
+
 [RFC 1945 - HTTP1.0](https://tools.ietf.org/html/rfc1945)[RFC 2616 - HTTP1.1](https://tools.ietf.org/html/rfc2616)  
 
 HTTP协议被广泛运用于浏览器访问Web网页的场景中，当然其灵活性也使得它能够在其他领域发挥优势比如API、RPC。

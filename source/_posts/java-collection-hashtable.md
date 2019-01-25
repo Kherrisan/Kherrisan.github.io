@@ -13,6 +13,8 @@ date: 2018-10-05 15:00:47
 
 ![](https://www.dokyme.cn/wp-content/uploads/2018/05/Snipaste_2018-05-09_16-06-28.jpg) HashTable继承了Dictionary类，这个抽象类没有在HashMap中见到过。进入该Dictionary抽象类中，发现所有的方法都没有实现，而且和Map接口很相似。 初步浏览了一下HashTable，感觉比HashMap更轻量一些，同时额外地提供了同步机制（在方法之前加synchronized关键字，类似于Vector之于ArrayList）。
 
+<!-- more -->
+
 属性
 ==
 

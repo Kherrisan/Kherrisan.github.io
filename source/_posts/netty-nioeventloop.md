@@ -11,7 +11,11 @@ id: 1045
 date: 2018-12-24 20:41:23
 ---
 
-作为Netty中最核心的概念之一，`NioEventLoop`作为线程实体承载Netty中几乎所有代码的运行、所有事件的检测和触发。`EventLoop`这个单词并不陌生。在很多的图形用户界面（GUI）程序中，都会使用较少的数个线程来运行代码，以应对用户操作事件。 由于Netty的线程模型基于Java的**NIO**，而NIO又是通过**IO多路复用**实现的。IO多路复用是底层技术，在其之上则是负责管理多路IO的线程模型。Reactor模式就是一种经典的多线程IO设计模型。 ![](https://www.dokyme.cn/wp-content/uploads/2018/12/bac046f2b4275f47ac043f79a02afbf2.png) ![](https://www.dokyme.cn/wp-content/uploads/2018/12/c41d622de1844a7118f5dd4c3e64c172.png) ![](https://www.dokyme.cn/wp-content/uploads/2018/12/f1e818b190a1ab88c077a337c471f8f3.png) 上面的第一张图是多线程IO模型，第二张图是单线程NIO模型，第三张图是Reactor线程模型。第一和第二张图的区别主要在于线程是否复用，第二和第三张图的区别在于第二张图使用单线程（进程）处理读写事件而图三将对同一台远程主机的操作聚合到一个Handler里面，由Reactor负责派发事件给Handler执行。 当然，Handler中代码的执行也是需要线程的，这时就可以考虑线程的复用，即通过线程池管理线程。而Acceptor也可以进行多线程并发，也可以使用线程池。
+作为Netty中最核心的概念之一，`NioEventLoop`作为线程实体承载Netty中几乎所有代码的运行、所有事件的检测和触发。`EventLoop`这个单词并不陌生。在很多的图形用户界面（GUI）程序中，都会使用较少的数个线程来运行代码，以应对用户操作事件。 由于Netty的线程模型基于Java的**NIO**，而NIO又是通过**IO多路复用**实现的。IO多路复用是底层技术，在其之上则是负责管理多路IO的线程模型。Reactor模式就是一种经典的多线程IO设计模型。 
+
+<!-- more -->
+
+![](https://www.dokyme.cn/wp-content/uploads/2018/12/bac046f2b4275f47ac043f79a02afbf2.png) ![](https://www.dokyme.cn/wp-content/uploads/2018/12/c41d622de1844a7118f5dd4c3e64c172.png) ![](https://www.dokyme.cn/wp-content/uploads/2018/12/f1e818b190a1ab88c077a337c471f8f3.png) 上面的第一张图是多线程IO模型，第二张图是单线程NIO模型，第三张图是Reactor线程模型。第一和第二张图的区别主要在于线程是否复用，第二和第三张图的区别在于第二张图使用单线程（进程）处理读写事件而图三将对同一台远程主机的操作聚合到一个Handler里面，由Reactor负责派发事件给Handler执行。 当然，Handler中代码的执行也是需要线程的，这时就可以考虑线程的复用，即通过线程池管理线程。而Acceptor也可以进行多线程并发，也可以使用线程池。
 
 EventLoop类体系
 ============

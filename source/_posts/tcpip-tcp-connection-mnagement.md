@@ -18,6 +18,8 @@ date: 2017-07-27 21:39:01
 
 [![https://gyazo.com/66f8ad95b3aa6fc3f89f62f768d1a6d3](https://i.gyazo.com/66f8ad95b3aa6fc3f89f62f768d1a6d3.png)](https://gyazo.com/66f8ad95b3aa6fc3f89f62f768d1a6d3)
 
+<!-- more -->
+
 ### 三次握手
 
 1.  c发送一个syn被置位的报文给s，表示想要建立连接，当然这个报文包含了c的ISN。

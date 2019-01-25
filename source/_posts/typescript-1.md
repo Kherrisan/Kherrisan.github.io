@@ -16,6 +16,8 @@ date: 2017-07-11 14:20:15
 
 Typescript是一个由微软开发的编程语言，听说有C#的首席架构师助阵Typescript的开发。是Javascript的超集，提供了可选的静态类型和基于类的面向对象编程，感觉就像C#和JavaScript之间的一种语言。 废话少说，先把环境搞起来，环境搭好了就可以码代码了。 以下所有的代码都来自于 [Typescriptlang](http://www.typescriptlang.org "Typescript") 这个网站，感觉比较良心，大家可以参考一下。
 
+<!-- more -->
+
 安装
 --
 

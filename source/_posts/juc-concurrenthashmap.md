@@ -13,6 +13,8 @@ date: 2018-10-14 17:14:51
 
 ![](https://www.dokyme.cn/wp-content/uploads/2018/10/dbdcdc86ee06761292636a46d6fc8878.png) 1.7中的ConcurrentHashMap使用分段锁来解决并发线程之间的同步竞争问题，本文总结1.8中的实现。
 
+<!-- more -->
+
 属性
 ==
 

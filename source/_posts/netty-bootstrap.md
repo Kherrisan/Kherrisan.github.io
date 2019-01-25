@@ -18,6 +18,8 @@ ChannelFuture f = b.bind(PORT).sync();
 
 ```
 
+<!-- more -->
+
 `sync`方法的功能是同步地等待该操作结束，因此对于server启动监听没有实质性的作用，这里可以忽略他。 首先进入到`bootstrap.bind`方法中，这个方法由`AbstractBootstrap`负责实现：
 
 ```java

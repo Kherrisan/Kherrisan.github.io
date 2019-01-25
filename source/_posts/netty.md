@@ -19,6 +19,8 @@ Intellij，启动！
 
 [Netty分享之动态生成重复性的代码](https://www.jianshu.com/p/9160684f134b)
 
+<!-- more -->
+
 完整过程
 ----
 

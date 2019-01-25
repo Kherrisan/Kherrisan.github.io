@@ -19,6 +19,8 @@ tiny-spring
 1.  读取bean的xml配置文件，并解析每个bean的定义，及其属性。
 2.  延迟bean的实例化，并根据依赖关系进行组装。
 
+<!-- more -->
+
 所用到的类文件如下： ![](https://www.dokyme.cn/wp-content/uploads/2018/08/Snipaste_2018-08-07_20-20-34.png)
 
 Resource和ResourceLoader

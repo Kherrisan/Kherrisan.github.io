@@ -11,6 +11,8 @@ id: 203
 date: 2017-07-22 21:52:40
 ---
 
+<!-- more -->
+
 ```null
 function add(x: number, y: number): number {
   return x + y;

@@ -13,6 +13,8 @@ date: 2018-02-14 14:57:23
 
 ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-14_13-15-56-1.jpg) 和List不一样，Set表示的是集合的概念，关注的是元素的有无、存在与否，而不关心容器内元素的顺序。 ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-16_15-13-28.jpg) HashSet的实现是基于HashMap的，与Map不同的地方在于HashSet中Key对应的Value只需要一个标记即可。 由于HashSet最核心的部分————Hash已经由HashMap完成，因此只要加一个包装即可。
 
+<!-- more -->
+
 属性
 --
 

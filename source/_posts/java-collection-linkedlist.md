@@ -13,6 +13,8 @@ date: 2018-02-10 12:43:22
 
 LinkedList不同于ArrayList，虽然二者都是List，呈现给用户的都是顺序列表容器，但是底层的实现是不一样的。ArrayList直接以Java的数组作为底层实现，数组中相邻元素在元素中也是相邻的，保持一致的顺序排列。而LinkedList的底层实现使用的是链表，即LinkedList中的元素在内存中不必相邻，不必连续排列，可以分散在各处，元素花费额外的空间存放指针来记录相邻元素的位置。 链表与数组各有各的优劣，数组的随机访问效率最高，但是要插入删除元素时必须要搬移其他元素；链表插入删除元素只需要常数时间复杂度，但是随机访问需要逐个遍历元素。 比较一下LinkedList和ArrayList分别继承了哪些类，实现了哪些接口。
 
+<!-- more -->
+
 public class LinkedList<E>
     extends AbstractSequentialList<E>
     implements List<E>, Deque<E>, Cloneable, java.io.Serializable

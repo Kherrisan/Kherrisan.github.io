@@ -16,6 +16,8 @@ Loop过程
 
 `NioEventLoop`最核心的就是处理事件循环的`run`方法。这个方法看起来不长，但实际上它承担了最重要的逻辑，并且对很多细节问题做了处理。
 
+<!-- more -->
+
 ```java
     @Override
     protected void run() {

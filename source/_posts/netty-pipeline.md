@@ -13,6 +13,8 @@ date: 2019-01-08 22:25:02
 
 )Netty中使用Handler对数据包进行处理，每个Handler成为整个处理过程的一个阶段，几个Handler前后相连构成了一个处理数据包的流水线（Pipeline）。同一个Handler实现可以在多种不同的处理流程中发挥自身的局部作用，可复用。 `Pipeline`的继承结构： ![](https://www.dokyme.cn/wp-content/uploads/2019/01/e1fb7cb818b3cd0d10e25e3905f0efcb.png)
 
+<!-- more -->
+
 第一个Pipeline
 ===========
 

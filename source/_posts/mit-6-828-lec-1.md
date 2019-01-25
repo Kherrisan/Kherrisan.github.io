@@ -13,6 +13,8 @@ date: 2017-07-19 16:13:44
 
 [![https://gyazo.com/43c38a68a3753834a69995cd0a6ee24b](https://i.gyazo.com/43c38a68a3753834a69995cd0a6ee24b.png)](https://gyazo.com/43c38a68a3753834a69995cd0a6ee24b)
 
+<!-- more -->
+
 HW:Boot xv6
 -----------
 
