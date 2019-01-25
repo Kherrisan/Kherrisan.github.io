@@ -13,6 +13,8 @@ date: 2018-10-06 15:08:33
 
 ![](https://www.dokyme.cn/wp-content/uploads/2018/10/6de3aa05c56e9c4d58266c20b05abb9c.png) AQS————AbstractQueuedSynchronizor，队列同步器，AQS是一个抽象类，它为开发者编写同步工具（比如锁、信号量）提供了开发框架，这个框架封装了对线程和竞态条件的细节，使得开发者能够只关注于锁的逻辑，而无需关注线程的维护以及竞态条件的控制。 JUC中很多锁都是基于AQS进行开发的。
 
+<!-- more -->
+
 Node类
 =====
 

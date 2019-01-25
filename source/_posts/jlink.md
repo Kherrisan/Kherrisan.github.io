@@ -12,6 +12,8 @@ date: 2019-01-06 19:38:54
 
 JDK9中的模块化技术使得原本一两百兆的JRE能够被拆分成多个较小的模块，因此如果想要把Java程序打包成可执行程序，并在没有JRE环境的机器上运行，不再需要带上一个庞大的JRE，而只需要额外增加几个JDK中的module。 项目目录结构如下，仅仅是一个很简单的Hello World程序。代码中仅仅使用到了System.out.println这一个JDK中提供的函数。 ![](https://www.dokyme.cn/wp-content/uploads/2019/01/b6fc620903896d3ef034f5bed269fcaa.png) 最重要的是module-info.jar文件，这个文件是module的定义文件，声明了我所编写的这个模块需要依赖哪些模块，以及对外暴露哪些东西。 由于只依赖java.base模块，而这个模块是默认包含的，因此module-info的大括号内可以为空。
 
+<!-- more -->
+
 ```java
 module dkm {
 }

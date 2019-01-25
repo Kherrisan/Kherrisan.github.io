@@ -19,3 +19,5 @@ date: 2018-05-07 18:49:19
 3.  Context：管理web应用长下文。
 
 目录： 1.[IOC](https://www.dokyme.cn/index.php/2018/08/07/spring-ioc/) 2.Resources 3.Validation, Data Binding, and Type Conversion 4.AOP
+
+<!-- more -->

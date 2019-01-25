@@ -18,6 +18,8 @@ public class ArrayList<E> extends AbstractList<E>
 
 ```
 
+<!-- more -->
+
 ArrayList继承了AbstractList，实现了List、RandomAccess、Cloneable、Serializable接口。 RandomAccess接口定义里没有函数，他只是一个标记。如果一个实现了List接口的类支持快速的随机访问（一般是常数时间的），那就要用实现这个接口。或者说如果
 
 ```null

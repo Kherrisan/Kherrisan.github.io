@@ -13,6 +13,8 @@ date: 2018-05-07 18:24:37
 
 ![](https://www.dokyme.cn/wp-content/uploads/2018/05/Snipaste_2018-05-07_18-25-12.jpg) JSP是基于Servlet和模板渲染技术发展出来的一种后端开发技术（虽然现在JavaEE说到底都是用的Servlet）。其原理非常简单，模板引擎解析JSP文件之后，将其中的Java对象取出，其余的字面常量统统放入print函数中，以最为淳朴的字符串连接的操作组成最终完整的响应，填充到servlet的对应函数中。
 
+<!-- more -->
+
 生命周期
 ====
 

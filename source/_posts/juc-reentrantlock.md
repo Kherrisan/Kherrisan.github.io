@@ -15,6 +15,8 @@ date: 2018-10-06 16:32:27
 
 > 一个可重入的互斥锁定 Lock，它具有与使用 synchronized 方法和语句所访问的隐式监视器锁定相同的一些基本行为和语义，但功能更强大。ReentrantLock 将由最近成功获得锁定，并且还没有释放该锁定的线程所拥有。当锁定没有被另一个线程所拥有时，调用 lock 的线程将成功获取该锁定并返回。如果当前线程已经拥有该锁定，此方法将立即返回。可以使用 isHeldByCurrentThread() 和 getHoldCount() 方法来检查此情况是否发生。
 
+<!-- more -->
+
 ReentrantLock有3个内部类，一个Sync类及其衍生出的两个子类FairSync和NonFairSync，代表公平锁和非公平锁。
 
 公平性的控制

@@ -11,7 +11,11 @@ id: 982
 date: 2018-10-05 18:31:50
 ---
 
-![](https://www.dokyme.cn/wp-content/uploads/2018/10/5e8210e35fb88ecb1fdf30acb61e0c78.png) Java中的优先队列采用的是最小堆的结构，即使用数组来保存一棵完全二叉树。**无界**，可以自动扩容。用于比较的元素值必须是不可变的否则最小堆的性质会被破坏。 ![](https://www.dokyme.cn/wp-content/uploads/2018/10/b969e51cd210f011a3bd6b8062a1e37b.png)
+![](https://www.dokyme.cn/wp-content/uploads/2018/10/5e8210e35fb88ecb1fdf30acb61e0c78.png) Java中的优先队列采用的是最小堆的结构，即使用数组来保存一棵完全二叉树。**无界**，可以自动扩容。用于比较的元素值必须是不可变的否则最小堆的性质会被破坏。
+
+<!-- more -->
+
+ ![](https://www.dokyme.cn/wp-content/uploads/2018/10/b969e51cd210f011a3bd6b8062a1e37b.png)
 
 属性
 ==

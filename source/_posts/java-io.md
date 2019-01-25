@@ -12,6 +12,8 @@ date: 2018-05-07 16:53:04
 
 java整个io包主要分为四块：字节流、字符流、File、RandomAccessFile。其中最复杂的是字节流和字符流两个簇，File和RandomAccessFile的功能较为单一。从名字可以看出，RandomAccessFile用于随机读写，字节流和字符流则用于顺序读写。 ![](https://www.dokyme.cn/wp-content/uploads/2018/05/Snipaste_2018-05-07_16-01-04.jpg)
 
+<!-- more -->
+
 字节流
 ===
 

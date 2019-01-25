@@ -11,7 +11,11 @@ id: 551
 date: 2018-02-17 14:31:56
 ---
 
-![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-17_12-14-56.jpg) LinkedHashMap和HashMap的区别在于前者在HashMap的基础上还维护了一个贯穿所有节点的双向链表，该链表决定了遍历的顺序，形如一个队列。 当然，这个链表并不会影响HashMap的结构，和HashMap的table或者链表或者红黑树是完全独立的一个结构。该链表的顺序可以是插入元素的顺序也可以是访问元素的顺序，具体选择何种顺序取决于accessOrder属性是true还是false。 在hashmap中预留了几个抽象方法，并在put和get等操作内调用了这些方法，为子类提供了可扩展的点。**我认为这是“模板方法模式”的体现。** ![](https://www.dokyme.cn/wp-content/uploads/2018/09/4d2e73e200c8762093663515560758e2.png) 在HashMap的Node中，就已经提供了next属性，但没有用到。在LinkedHashMap中，每个节点的next属性根据访问或者插入顺序连接下一个节点。
+![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-17_12-14-56.jpg) LinkedHashMap和HashMap的区别在于前者在HashMap的基础上还维护了一个贯穿所有节点的双向链表，该链表决定了遍历的顺序，形如一个队列。 当然，这个链表并不会影响HashMap的结构，和HashMap的table或者链表或者红黑树是完全独立的一个结构。该链表的顺序可以是插入元素的顺序也可以是访问元素的顺序，具体选择何种顺序取决于accessOrder属性是true还是false。 在hashmap中预留了几个抽象方法，并在put和get等操作内调用了这些方法，为子类提供了可扩展的点。**我认为这是“模板方法模式”的体现。** 
+
+<!-- more -->
+
+![](https://www.dokyme.cn/wp-content/uploads/2018/09/4d2e73e200c8762093663515560758e2.png) 在HashMap的Node中，就已经提供了next属性，但没有用到。在LinkedHashMap中，每个节点的next属性根据访问或者插入顺序连接下一个节点。
 
 属性
 --

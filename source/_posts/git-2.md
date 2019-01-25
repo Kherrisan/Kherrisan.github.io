@@ -15,6 +15,8 @@ Git 基础
 
 git是一个分布式的版本管理工具。所谓的分布式就是每个人的电脑上都可以安装完整的git管理系统，进行本地的版本管理，而不需要中央服务器的集中管理。 git不同于其他版本管理系统，它保存的是一个项目中所有文件的集合的快照，如果文件没有被修改那就用一个指针指向之前那个版本。 ![](https://git-scm.com/book/en/v2/images/snapshots.png)
 
+<!-- more -->
+
 ### 重点：三种状态
 
 ![](https://git-scm.com/book/en/v2/images/areas.png)

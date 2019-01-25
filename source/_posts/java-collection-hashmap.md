@@ -11,7 +11,11 @@ id: 509
 date: 2018-02-14 16:08:09
 ---
 
-**本部分的内容可能会随着java版本的变化而产生较大的变化，因此事先注明：下面的代码和原理都是基于JDK1.8。** ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-14_13-15-56-1.jpg) Map是一种不同于List、Set和Queue的数据结构，其中存放的每个单元实际上包含两个元素————Key和Value，这两个元素都是开发人员所关心的。Map描述的是Key和Value的对应关系，就如同List中一个index对应一个element，只是Map的Key的类型并不一定是整数，可以是其他任何类型。 ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-14_15-53-23.jpg) HashMap继承了AbstractMap，实现了Map、Cloneable和Serializable接口。 其中Map接口如下：
+**本部分的内容可能会随着java版本的变化而产生较大的变化，因此事先注明：下面的代码和原理都是基于JDK1.8。** ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-14_13-15-56-1.jpg) Map是一种不同于List、Set和Queue的数据结构，其中存放的每个单元实际上包含两个元素————Key和Value，这两个元素都是开发人员所关心的。Map描述的是Key和Value的对应关系，就如同List中一个index对应一个element，只是Map的Key的类型并不一定是整数，可以是其他任何类型。
+
+<!-- more -->
+
+ ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-14_15-53-23.jpg) HashMap继承了AbstractMap，实现了Map、Cloneable和Serializable接口。 其中Map接口如下：
 
 ```
 public interface Map<K,V>{

@@ -22,6 +22,8 @@ buildscript {
     }
 }
 
+<!-- more -->
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'

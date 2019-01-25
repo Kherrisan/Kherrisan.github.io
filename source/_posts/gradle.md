@@ -12,6 +12,8 @@ date: 2018-04-18 22:31:37
 
 这是一个Spring Boot项目的build.gradle文件。
 
+<!-- more -->
+
 ```null
 buildscript {
     ext {

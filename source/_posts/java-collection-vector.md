@@ -13,6 +13,8 @@ date: 2018-02-14 14:45:43
 
 ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-14_13-20-11.jpg) ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-14_13-22-11.jpg) Vector类的原型和ArrayList是一模一样的，实现了RandomAccess接口说明遍历的时候使用get方法比使用迭代器方法快（LinkedList就不必实现该接口），继承了AbstractList提供的一些较为基础和简单的方法实现（比如常常提到的modCount）。
 
+<!-- more -->
+
 属性
 --
 

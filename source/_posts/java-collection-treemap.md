@@ -11,7 +11,11 @@ id: 573
 date: 2018-02-21 14:12:22
 ---
 
-![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-21_14-15-34.jpg) TreeMap继承了AbstractMap抽象类，实现了NavigableMap接口。这个接口是HashMap和LinkedHashMap的定义中都没有见过的，从字面意思上来看，应该是“可导航Map”，到底是怎么个导航法，需要先了解一下这个接口。 ![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-21_14-21-43.jpg) NavigableMap也不是一个顶级的接口，它实现了SortedMap接口。SortedMap接口描述了Map的排列方式的一种特殊情形：所有的Key-Value对都是按照Key的大小一致升序或者降序排列，这里的大小指的就是Comparable接口。降序或者升序集中体现在遍历该Map的时候。有了这个特性，就可以提供一些其他的功能。如给定一个key，返回所有的大于这个key的Key-value组成的Map（视图），或者所有小于这个key的key-value组成的Map（视图）。 NavigableMap在SortedMap提供有序key-value的基础上拓展了一些功能，能够提供离某个key最近的entry，可以以目标key为上界，也可以之为下界。有点类似于向上取整和向下取整的意思。 再回到TreeMap，根据它的注释，可知TreeMap是基于红黑树实现的Map（注释中还特别强调了是算法导论中的红黑树hhh），基本的增删改查需要log(n)的时间复杂度，这比HashMap慢一些，因为HashMap使用的是散列表，访问元素只需要线性时间。 TreeMap是一个相当复杂的类，不仅仅是在算法的实现上，更在于类结构的设计上。
+![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-21_14-15-34.jpg) TreeMap继承了AbstractMap抽象类，实现了NavigableMap接口。这个接口是HashMap和LinkedHashMap的定义中都没有见过的，从字面意思上来看，应该是“可导航Map”，到底是怎么个导航法，需要先了解一下这个接口。 
+
+<!-- more -->
+
+![](https://www.dokyme.cn/wp-content/uploads/2018/02/Snipaste_2018-02-21_14-21-43.jpg) NavigableMap也不是一个顶级的接口，它实现了SortedMap接口。SortedMap接口描述了Map的排列方式的一种特殊情形：所有的Key-Value对都是按照Key的大小一致升序或者降序排列，这里的大小指的就是Comparable接口。降序或者升序集中体现在遍历该Map的时候。有了这个特性，就可以提供一些其他的功能。如给定一个key，返回所有的大于这个key的Key-value组成的Map（视图），或者所有小于这个key的key-value组成的Map（视图）。 NavigableMap在SortedMap提供有序key-value的基础上拓展了一些功能，能够提供离某个key最近的entry，可以以目标key为上界，也可以之为下界。有点类似于向上取整和向下取整的意思。 再回到TreeMap，根据它的注释，可知TreeMap是基于红黑树实现的Map（注释中还特别强调了是算法导论中的红黑树hhh），基本的增删改查需要log(n)的时间复杂度，这比HashMap慢一些，因为HashMap使用的是散列表，访问元素只需要线性时间。 TreeMap是一个相当复杂的类，不仅仅是在算法的实现上，更在于类结构的设计上。
 
 属性
 --
