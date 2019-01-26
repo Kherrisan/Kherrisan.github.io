@@ -5,5 +5,5 @@
 %}
 
 {% for bs in boot_scripts %}
-  <script src="{{ url_for(theme.js) }}/{{ bs }}?v={{ version }}"></script>
+  <script src="{{ url_for(theme.js) }}/{{ bs }}?v={{ version }}&__inline=true"></script>
 {% endfor %}
