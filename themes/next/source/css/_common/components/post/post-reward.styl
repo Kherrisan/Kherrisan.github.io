@@ -48,11 +48,13 @@
   text-align: center;
 }
 
+/*修复二维码闪动BUG
 #QR > div:hover p {
   animation: roll 0.1s infinite linear;
   -webkit-animation: roll 0.1s infinite linear;
   -moz-animation: roll 0.1s infinite linear;
 }
+*/
 
 @keyframes roll {
   from {
@@ -62,3 +64,5 @@
     transform(rotateZ(-30deg));
   }
 }
+
+
