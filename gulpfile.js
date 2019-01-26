@@ -24,7 +24,7 @@ gulp.task('minify-html', function () {
 });
 
 gulp.task('minify-js', function () {
-    return gulp.src(['./public/**/*.js', '!./public/**/*.min.js'])
+    return gulp.src(['./public/**/*.js', '!./public/**/*.min.js','!./public/static/*'])
         // .pipe(babel({ presets: ['es2015'] }))
         .pipe(uglify())
         .pipe(gulp.dest('./public'));
