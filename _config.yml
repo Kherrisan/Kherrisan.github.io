@@ -114,3 +114,9 @@ baidusitemap:
 asset_inline:
   enable: true
   limit: 100000
+
+search:
+    path: search.xml
+    field: post
+    format: html
+    limit: 10000
