@@ -5,5 +5,5 @@
 %}
 
 {% for script in scripts %}
-  <script src="{{ url_for(theme.js) }}/{{ script }}?v={{ version }}&_inline=true"></script>
+  <script src="{{ url_for(theme.js) }}/{{ script }}?v={{ version }}&__inline=true"></script>
 {% endfor %}
