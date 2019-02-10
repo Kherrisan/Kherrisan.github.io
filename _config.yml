@@ -113,7 +113,7 @@ baidusitemap:
 
 asset_inline:
   enable: true
-  limit: 100000
+  limit: 100
 
 search:
     path: search.xml
