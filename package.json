@@ -24,7 +24,7 @@
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.1",
     "hexo-symbols-count-time": "^0.4.4",
-    "live2d-widget-model-wanko": "^1.0.5",
+    "live2d-widget-model-rem": "1.0.1",
     "to-markdown": "^3.1.1",
     "turndown": "^5.0.1"
   },
