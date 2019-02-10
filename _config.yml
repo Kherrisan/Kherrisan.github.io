@@ -84,7 +84,7 @@ deploy:
 
 live2d:
   enable: true
-  scriptFrom: jsdelivr
+  scriptFrom: unpkg
   pluginRootPath: live2dw/
   pluginJsPath: lib/
   pluginModelPath: assets/
