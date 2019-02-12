@@ -83,7 +83,7 @@ deploy:
   branch: [master]
 
 live2d:
-  enable: true
+  enable: false
   scriptFrom: local
   pluginRootPath: live2dw/
   pluginJsPath: lib/
@@ -118,7 +118,7 @@ baidusitemap:
 
 asset_inline:
   enable: true
-  limit: 100
+  limit: 1000
 
 search:
     path: search.xml

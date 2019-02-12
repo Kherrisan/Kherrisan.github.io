@@ -14,18 +14,17 @@ gulp.task('minify-css', function () {
 gulp.task('minify-html', function () {
     return gulp.src('./public/**/*.html')
         .pipe(htmlclean())
-        .pipe(htmlmin({
-            removeComments: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true,
-        }))
+        // .pipe(htmlmin({
+        //     removeComments: true,
+        //     minifyJS: true,
+        //     minifyCSS: true,
+        //     minifyURLs: true,
+        // }))
         .pipe(gulp.dest('./public'))
 });
 
 gulp.task('minify-js', function () {
     return gulp.src(['./public/**/*.js', '!./public/**/*.min.js','!./public/static/**/*.js'])
-        // .pipe(babel({ presets: ['es2015'] }))
         .pipe(uglify())
         .pipe(gulp.dest('./public'));
 });
