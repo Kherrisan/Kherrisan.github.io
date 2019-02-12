@@ -141,7 +141,7 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  leetcode: https://www.dokyme.cn/leetcode/ || lemon
+  leetcode: https://www.dokyme.cn/leetcode/ || lemon-o
   about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
@@ -951,7 +951,7 @@ vendors:
   # Example:
   # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css
   # fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css
-  fontawesome: https://use.fontawesome.com/releases/v5.7.1/css/all.css
+  fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css
 
   # Internal version: 2.4.1
   # See: https://www.algolia.com
