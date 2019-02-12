@@ -141,7 +141,7 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  leetcode: /leetcode/ || archive
+  leetcode: http://www.dokyme.cn/leetcode || lemon
   about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
