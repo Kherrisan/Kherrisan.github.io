@@ -951,7 +951,7 @@ vendors:
   # Example:
   # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css
   # fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css
-  fontawesome: http://kherrisanbucketone.oss-cn-shanghai.aliyuncs.com/all.css
+  fontawesome: https://use.fontawesome.com/releases/v5.7.1/css/all.css
 
   # Internal version: 2.4.1
   # See: https://www.algolia.com
