@@ -16,7 +16,7 @@ date: 2017-09-29 21:28:23
 
 <!-- more -->
 
- ![](https://www.dokyme.cn/wp-content/uploads/2017/09/Snipaste_2017-09-29_21-31-22-1.png) ![](https://www.dokyme.cn/wp-content/uploads/2017/09/Snipaste_2017-09-29_21-31-28.png) 用wireshark，根据目的地ip地址进行过滤。看到了ICMP报文。进行tracert的数据包形式是ICMP报文，也就是人们常说的ping。 根据ICMP报文的信息可以判断出tracert的核心是ICMP报文的TTL字段。Time to Live描述的是该包还能够经过的路由器转发的次数，稍微专业一点的话称为跳数。每经过一次路由器转发，ttl就会减一。当某台路由器收到TTL为0的报文的时候，就会把他丢弃，并向源发送一个Time to Live exceeded in transit（ICMP的type为11）。 ![](https://userimage3.360doc.com/12/1218/10/3405077_201212181034160806.jpg) ![](https://www.dokyme.cn/wp-content/uploads/2017/09/Snipaste_2017-09-29_22-07-04.png) ![](https://www.dokyme.cn/wp-content/uploads/2017/09/Snipaste_2017-09-29_22-07-48.png) ![](https://www.dokyme.cn/wp-content/uploads/2017/09/Snipaste_2017-09-29_22-09-31.png) tracert实现的功能就可以描述成：得到从源到目的路径上的TTL为1、2、3...N的路由器，这是一个循环式的流程，很容易实现。 如果ICMP在某个TTL内成功到达了目的主机，那主机就会返回一个ping的reply。 ![](https://www.dokyme.cn/wp-content/uploads/2017/09/Snipaste_2017-09-29_22-12-19.png) 从wireshark中也可以看出tracert探测的模式：每个TTL发送三个ICMP报文，收到三个回复后再把TTL+1，再继续发送。 基于上述原理，可以开始尝试自己发送ICMP报文并实现tracert功能了。 注：由于国庆回家，网络环境发生了一些变化，我现在只能在家进行实验，因此每一条的结果肯定会和在宿舍进行追踪产生的结果不同。 下面先贴出我写的py程序：
+ ![](https://kherrisanbucketone.oss-cn-shanghai.aliyuncs.com/Snipaste_2017-09-29_22-12-19.png) 从wireshark中也可以看出tracert探测的模式：每个TTL发送三个ICMP报文，收到三个回复后再把TTL+1，再继续发送。 基于上述原理，可以开始尝试自己发送ICMP报文并实现tracert功能了。 注：由于国庆回家，网络环境发生了一些变化，我现在只能在家进行实验，因此每一条的结果肯定会和在宿舍进行追踪产生的结果不同。 下面先贴出我写的py程序：
 
 ```null
 from scapy.all import *
@@ -50,4 +50,4 @@ if __name__ == '__main__':
 
 ```
 
-这是windows自带的tracert的输出结果。 ![](https://www.dokyme.cn/wp-content/uploads/2017/09/Snipaste_2017-10-01_20-37-22.png) 我写的程序的输出有点长，因为我不知道怎样关掉scapy自带的log输出，也google不到屏蔽scapy输入的方法，所以我这里就不贴上来了。但是我把我写的tracert和windows的tracert的输出结果进行了比对，发现基本上是一致的，中途有一两个路由器不一样也情有可原。 但是我写的tracert的wireshark抓包结果是可以贴一下的： ![](https://www.dokyme.cn/wp-content/uploads/2017/09/Snipaste_2017-10-01_20-47-17.png) 从图中可以看出，scapy的动作也是很有规律的，基本上符合发送两个ICMP报文，收到一个reply的模式，而且对同一个地址的两个ICMP之间相隔不到20ms。
+这是windows自带的tracert的输出结果。 ![](https://kherrisanbucketone.oss-cn-shanghai.aliyuncs.com/Snipaste_2017-10-01_20-47-17.png) 从图中可以看出，scapy的动作也是很有规律的，基本上符合发送两个ICMP报文，收到一个reply的模式，而且对同一个地址的两个ICMP之间相隔不到20ms。

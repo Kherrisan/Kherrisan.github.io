@@ -21,7 +21,7 @@ tiny-spring
 
 <!-- more -->
 
-所用到的类文件如下： ![](https://www.dokyme.cn/wp-content/uploads/2018/08/Snipaste_2018-08-07_20-20-34.png)
+所用到的类文件如下： ![](https://kherrisanbucketone.oss-cn-shanghai.aliyuncs.com/Snipaste_2018-08-07_20-20-34.png)
 
 Resource和ResourceLoader
 -----------------------
@@ -46,7 +46,7 @@ ApplicationContext接口继承了BeanFactory接口，因为其本质上也是负
 BeanPostProcessor
 -----------------
 
-这个接口提供了两个方法来拓展bean初始化前后的操作，AbstractApplicationContext会将所有BeanPostProcessor类型的bean注册到beanFactory中去，当beanFactory初始化某个bean时，会调用该Processor的两个回调函数。 ![](https://www.dokyme.cn/wp-content/uploads/2018/08/tinyspring.jpg)
+这个接口提供了两个方法来拓展bean初始化前后的操作，AbstractApplicationContext会将所有BeanPostProcessor类型的bean注册到beanFactory中去，当beanFactory初始化某个bean时，会调用该Processor的两个回调函数。 ![](https://kherrisanbucketone.oss-cn-shanghai.aliyuncs.com/tinyspring.jpg)
 
 Spring
 ======

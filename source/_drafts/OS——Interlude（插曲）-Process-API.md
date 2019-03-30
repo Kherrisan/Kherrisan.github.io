@@ -13,4 +13,4 @@ categories:
 fork()
 ------
 
-![](https://www.dokyme.cn/wp-content/uploads/2018/04/Snipaste_2018-04-25_19-45-27.jpg)
+![](https://kherrisanbucketone.oss-cn-shanghai.aliyuncs.com/Snipaste_2018-04-25_19-45-27.jpg)
