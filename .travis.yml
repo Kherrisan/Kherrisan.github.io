@@ -15,6 +15,9 @@ before_script:
 script:
   - hexo clean
   - hexo generate
+  - gulp
+  - hexo generate
+  - gulp
 after_success:
   - hexo deploy
 branches:
