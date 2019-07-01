@@ -1,0 +1,1 @@
+hexo clean && hexo g && gulp && hexo g && hexo g && hexo deploy

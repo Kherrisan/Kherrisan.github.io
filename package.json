@@ -5,6 +5,9 @@
   "hexo": {
     "version": "3.8.0"
   },
+  "scripts": {
+    "deploy": "hexo clean && hexo g &&"
+  },
   "dependencies": {
     "eslint": "^5.16.0",
     "hexo": "^3.8.0",
