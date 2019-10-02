@@ -87,11 +87,11 @@ footer:
     # Version info of NexT after scheme info (vX.X.X).
     version: true
   # -------------------------------------------------------------
-  # Beian icp information for Chinese users. In China, every legal website should have a beian icp in website footer.
+  # Beian icp information for Chinese users. In China, every legal website should have a beian icp in websiteer.
   # http://www.miitbeian.gov.cn
   beian:
-    enable: false
-    icp:
+    enable: true
+    icp: 备案号占位符
 
   # -------------------------------------------------------------
   # Any custom text can be defined here.
@@ -142,6 +142,8 @@ menu:
   categories: /categories/ || th
   archives: /archives/ || archive
   leetcode: https://www.dokyme.cn/leetcode/ || lemon-o
+  books: /books || book
+  movies: /movies || film
   about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
