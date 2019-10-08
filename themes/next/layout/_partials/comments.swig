@@ -10,6 +10,10 @@
       </div>
     </div>
 
+  {% elif theme.isso.enable %}
+  <script src="http://47.96.224.246:8110/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+
   {% elif theme.vkontakte_api.enable and theme.vkontakte_api.comments %}
     <div class="comments" id="comments">
       <div id="vk_comments"></div>
