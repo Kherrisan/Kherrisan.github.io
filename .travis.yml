@@ -10,6 +10,7 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 47.96.224.246\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - export TZ='Asia/Shanghai'
+- npm install natives
 - npm install -g hexo-cli hexo gulp
 install:
 - npm install
@@ -20,7 +21,9 @@ before_script:
   _config.yml
 script:
 - hexo clean
+- gulp
 - hexo generate
+- gulp
 after_success:
 - hexo deploy
 - scp -o stricthostkeychecking=no -r public root@47.96.224.246:/var/www
