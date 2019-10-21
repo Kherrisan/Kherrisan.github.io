@@ -3,29 +3,33 @@ node_js: stable
 cache:
   apt: true
   directories:
-    - node_modules
+  - node_modules
 before_install:
-  - export TZ='Asia/Shanghai'
-  - npm install -g hexo-cli hexo gulp
+- openssl aes-256-cbc -K $encrypted_f9f5593bb07d_key -iv $encrypted_f9f5593bb07d_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host 47.96.224.246\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- export TZ='Asia/Shanghai'
+- npm install -g hexo-cli hexo gulp
 install:
-  - npm install
+- npm install
 before_script:
-  - git config user.name "Kherrisan"
-  - git config user.email "zdkscope@outlook.com"
-  - sed -i'' "s~git@github.com:Kherrisan/Kherrisan.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@github.com/Kherrisan/Kherrisan.github.io.git~"
-    _config.yml
-  - npm install -g hexo-cli gulp
+- git config user.name "Kherrisan"
+- git config user.email "zdkscope@outlook.com"
+- sed -i'' "s~git@github.com:Kherrisan/Kherrisan.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@github.com/Kherrisan/Kherrisan.github.io.git~"
+  _config.yml
 script:
-  - hexo clean
-  - hexo generate
-  - gulp
-  - hexo generate
-  - gulp
+- hexo clean
+- hexo generate
+- gulp
+- hexo generate
+- gulp
 after_success:
-  - hexo deploy
+- hexo deploy
+- scp -o stricthostkeychecking=no -r public root@47.96.224.246:/var/www
 branches:
   only:
-    - hexo
+  - hexo
 env:
   global:
-    - secure: V1RL4uvuBqy2uslZ1bGTEPiD9JgVI1D2YutwOCZNsYUOORPra2yAx03YJ7Ct7eL4ziyJeqYa9OEPGC2vAW/5+c1S4RMqdzVk0dd1Uk2AhAY9vmJmj8APcglCBRzYeKm+tifPJ8+Bg5U77MKx1+6MCzoJFev6LzLjjoQrlLcGvhkm8pcbeEYtnD3V5y+GfOAeP9Az4uTBKTssCEi6EG/UaKrFtdZGCXusk3k2VWtwHAFR3LSemXazmBZ92KfTy4S7fKrrgIB4vQCkqzaIekhLaHVyFdIctezoBeoUt4XaHfepDMIKyMGVCCp97Xa1cxzjqyfRl2/ezMg9ujHtVuobVpf05SJztPQdMTkYcq2HlMFvSTDLuExmxiWMPPiq9Li7OgCVgOij8pVUUlCipDGW8BVWZYv8Op+kYxjiZ1cX0km5ku7ad+KwZaJt/NI03w5T0haz+Ppt1vt2j/A60EPzhj7Z0xh4ybaXEeKvs1wqL3nZezrQ1TYqdRI8c1Z+QKtvFMPv3L4h2R5uma4zqXPCSW+1ZE23ybGfIrNU231MMB7j6c4aUYrKWINrWZ+tAvfpb8cSCPu4j91dqlT46UWI/cQah7UsYSCK3yxNd/JFdPeLr+MoxVx1nyUCB2fU4nvxODkbX4eFUGxy4hjRR20Vykbns2LMtVswpLAh4e0vP6A=
+  - secure: V1RL4uvuBqy2uslZ1bGTEPiD9JgVI1D2YutwOCZNsYUOORPra2yAx03YJ7Ct7eL4ziyJeqYa9OEPGC2vAW/5+c1S4RMqdzVk0dd1Uk2AhAY9vmJmj8APcglCBRzYeKm+tifPJ8+Bg5U77MKx1+6MCzoJFev6LzLjjoQrlLcGvhkm8pcbeEYtnD3V5y+GfOAeP9Az4uTBKTssCEi6EG/UaKrFtdZGCXusk3k2VWtwHAFR3LSemXazmBZ92KfTy4S7fKrrgIB4vQCkqzaIekhLaHVyFdIctezoBeoUt4XaHfepDMIKyMGVCCp97Xa1cxzjqyfRl2/ezMg9ujHtVuobVpf05SJztPQdMTkYcq2HlMFvSTDLuExmxiWMPPiq9Li7OgCVgOij8pVUUlCipDGW8BVWZYv8Op+kYxjiZ1cX0km5ku7ad+KwZaJt/NI03w5T0haz+Ppt1vt2j/A60EPzhj7Z0xh4ybaXEeKvs1wqL3nZezrQ1TYqdRI8c1Z+QKtvFMPv3L4h2R5uma4zqXPCSW+1ZE23ybGfIrNU231MMB7j6c4aUYrKWINrWZ+tAvfpb8cSCPu4j91dqlT46UWI/cQah7UsYSCK3yxNd/JFdPeLr+MoxVx1nyUCB2fU4nvxODkbX4eFUGxy4hjRR20Vykbns2LMtVswpLAh4e0vP6A=
