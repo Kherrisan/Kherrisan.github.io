@@ -11,7 +11,7 @@
     </div>
 
   {% elif theme.isso.enable %}
-  <script src="http://47.96.224.246:8110/js/embed.min.js"></script>
+  <script data-isso="http://47.96.224.246:8110/" src="http://47.96.224.246:8110/js/embed.min.js"></script>
   <section id="isso-thread"></section>
 
   {% elif theme.vkontakte_api.enable and theme.vkontakte_api.comments %}
