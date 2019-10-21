@@ -2,6 +2,8 @@ language: node_js
 node_js: stable
 cache:
   apt: true
+  directories:
+    - node_modules
 before_install:
   - export TZ='Asia/Shanghai'
   - npm install -g hexo-cli hexo gulp
@@ -12,6 +14,7 @@ before_script:
   - git config user.email "zdkscope@outlook.com"
   - sed -i'' "s~git@github.com:Kherrisan/Kherrisan.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@github.com/Kherrisan/Kherrisan.github.io.git~"
     _config.yml
+  - npm install -g hexo-cli gulp
 script:
   - hexo clean
   - hexo generate
