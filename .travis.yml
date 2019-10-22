@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 11
+- stable
 cache:
   apt: true
   directories:
@@ -11,7 +11,7 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 47.96.224.246\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - export TZ='Asia/Shanghai'
-- npm install -g hexo-cli hexo gulp
+- npm install -g hexo-cli hexo gulp@3.9
 install:
 - npm install
 before_script:
