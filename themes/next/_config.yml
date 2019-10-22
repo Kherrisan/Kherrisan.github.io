@@ -658,7 +658,7 @@ commento:
   enable: true
 
 isso:
-  enable: true
+  enable: false
 
 # Facebook comments plugin
 # This plugin depends on Facebook SDK.

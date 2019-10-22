@@ -1,10 +1,6 @@
 language: node_js
 node_js:
 - 11
-cache:
-  apt: true
-  directories:
-  - node_modules
 before_install:
 - openssl aes-256-cbc -K $encrypted_f9f5593bb07d_key -iv $encrypted_f9f5593bb07d_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
@@ -21,6 +17,8 @@ before_script:
   _config.yml
 script:
 - hexo clean
+- hexo generate
+- gulp
 - hexo generate
 - gulp
 after_success:
