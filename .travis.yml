@@ -16,11 +16,7 @@ before_script:
 - sed -i'' "s~git@github.com:Kherrisan/Kherrisan.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@github.com/Kherrisan/Kherrisan.github.io.git~"
   _config.yml
 script:
-- hexo clean
 - hexo generate
-- gulp
-- hexo generate
-- gulp
 after_success:
 - hexo deploy
 - scp -o stricthostkeychecking=no -r public root@47.96.224.246:/var/www
