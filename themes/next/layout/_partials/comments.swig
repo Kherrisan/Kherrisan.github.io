@@ -1,6 +1,11 @@
 {% if page.comments %}
 
-  {% if theme.facebook_sdk.enable and theme.facebook_comments_plugin.enable %}
+  {% if theme.commento.enable %}
+  <div class="comments" id="comments">
+    <div id="commento"></div>
+  </div>
+
+  {% elif theme.facebook_sdk.enable and theme.facebook_comments_plugin.enable %}
     <div class="comments" id="comments">
       <div class="fb-comments"
            data-href="{{ page.permalink }}"
@@ -9,10 +14,6 @@
            data-colorscheme="{{ theme.facebook_comments_plugin.scheme }}">
       </div>
     </div>
-
-  {% elif theme.isso.enable %}
-  <script data-isso="http://47.96.224.246:8110/" src="http://47.96.224.246:8110/js/embed.min.js"></script>
-  <section id="isso-thread"></section>
 
   {% elif theme.vkontakte_api.enable and theme.vkontakte_api.comments %}
     <div class="comments" id="comments">

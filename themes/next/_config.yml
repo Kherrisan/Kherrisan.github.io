@@ -654,6 +654,9 @@ facebook_sdk:
   like_button:  #true
   webmaster:    #true
 
+commento:
+  enable: true
+
 isso:
   enable: true
 
