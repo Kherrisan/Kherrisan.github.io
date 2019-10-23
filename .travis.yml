@@ -17,6 +17,9 @@ before_script:
   _config.yml
 script:
 - hexo generate
+- gulp
+- hexo generate
+- gulp
 after_success:
 - hexo deploy
 - scp -o stricthostkeychecking=no -r public root@47.96.224.246:/var/www

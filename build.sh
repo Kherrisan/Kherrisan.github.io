@@ -1,5 +1,8 @@
 echo Start to build blog!
 hexo clean &&
 hexo generate &&
-gulp &&
+gulp &
+hexo generate &&
+gulp &
+hexo deploy &&
 echo Building finished!

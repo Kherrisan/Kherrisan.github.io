@@ -1,8 +1,6 @@
 var gulp = require('gulp');
 var minifycss = require('gulp-minify-css');
-// var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
-var htmlmin = require('gulp-htmlmin');
 var htmlclean = require('gulp-htmlclean');
 
 gulp.task('minify-css', function () {

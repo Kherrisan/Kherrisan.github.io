@@ -1,7 +1,12 @@
 <div class="copyright">{#
 #}{% set current = date(Date.now(), "YYYY") %}{#
 #}{% if theme.footer.beian.enable %}{#
-#}  {{ next_url('http://www.beian.miit.gov.cn', theme.footer.beian.icp + ' ') }}{#
+#}  <div>
+    {{ next_url('www.beian.miit.gov.cn', theme.footer.beian.icp) }}
+    <span class="post-meta-divider">|</span>
+    <img src="http://www.beian.gov.cn/portal/download?token=0df38024-105a-4002-8e4f-67b095c4d433" style="display:inline-block;text-decoration:none;height:13px;" />
+    {{ next_url('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=公安备案号', theme.footer.beian.gongan) }}
+  </div>{#
 #}{% endif %}<br/>{#
 #}&copy; {% if theme.footer.since and theme.footer.since != current %}{{ theme.footer.since }} – {% endif %}{#
 #}<span itemprop="copyrightYear">{{ current }}</span>

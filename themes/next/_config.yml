@@ -91,7 +91,8 @@ footer:
   # http://www.miitbeian.gov.cn
   beian:
     enable: true
-    icp: 备案号占位符
+    icp: 苏ICP备17065958号-1
+    gongan: 公安备案号占位符
 
   # -------------------------------------------------------------
   # Any custom text can be defined here.
