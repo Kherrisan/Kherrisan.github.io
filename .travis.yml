@@ -22,7 +22,10 @@ script:
 - gulp
 after_success:
 - hexo deploy
-- scp -o stricthostkeychecking=no -r public root@129.211.151.85:/home/ubuntu/www
+- scp -o stricthostkeychecking=no -r public root@129.211.151.85:/var/www
+- ssh root@129.211.151.85 "mv /var/www/public /var/www/hexo"
+- ssh root@129.211.151.85 "chown -R www-data:www-data /var/www/hexo"
+- ssh root@129.211.151.85 "chmod -R 555 /var/www/hexo"
 branches:
   only:
   - hexo
