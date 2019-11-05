@@ -91,7 +91,7 @@ footer:
   # http://www.miitbeian.gov.cn
   beian:
     enable: true
-    icp: 苏ICP备17065958号-1
+    icp: 苏ICP备17065958号-2
     gongan: 
       local: 苏
       number: 32040202000292
