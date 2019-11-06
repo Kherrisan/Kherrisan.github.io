@@ -5,7 +5,6 @@
 {% elif theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
   {% include 'valine.swig' %}
 {% elif theme.commento.enable %}
-  <script src="https://commento.kherrisan.cn/js/commento.js"></script>
 {% endif %}
 
 {% if page.comments %}
