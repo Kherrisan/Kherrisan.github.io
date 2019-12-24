@@ -5,7 +5,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_f9f5593bb07d_key -iv $encrypted_f9f5593bb07d_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
-- echo -e "Host 47.96.224.246\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host 129.211.151.85\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - export TZ='Asia/Shanghai'
 - npm install -g hexo-cli@2.0.0 gulp@3.9
 install:
