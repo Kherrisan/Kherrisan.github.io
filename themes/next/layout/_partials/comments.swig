@@ -1,12 +1,6 @@
 {% if page.comments %}
 
-  {% if theme.commento.enable %}
-  <div class="comments" id="comments">
-    <div id="commento"></div>
-  <script src="https://commento.kherrisan.cn/js/commento.js"></script>
-  </div>
-
-  {% elif theme.facebook_sdk.enable and theme.facebook_comments_plugin.enable %}
+  {% if theme.facebook_sdk.enable and theme.facebook_comments_plugin.enable %}
     <div class="comments" id="comments">
       <div class="fb-comments"
            data-href="{{ page.permalink }}"

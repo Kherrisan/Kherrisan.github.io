@@ -4,7 +4,6 @@
   {% include 'changyan.swig' %}
 {% elif theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
   {% include 'valine.swig' %}
-{% elif theme.commento.enable %}
 {% endif %}
 
 {% if page.comments %}
