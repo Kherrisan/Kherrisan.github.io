@@ -144,10 +144,10 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  leetcode: https://www.dokyme.cn/leetcode/ || lemon-o
-  books: /books || book
-  movies: /movies || film
-  about: /about/ || user
+  #leetcode: https://www.dokyme.cn/leetcode/ || lemon-o
+  #books: /books || book
+  #movies: /movies || film
+  #about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
