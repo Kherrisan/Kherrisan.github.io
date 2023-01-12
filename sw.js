@@ -1,7 +1,7 @@
 
 const CACHE_NAME = 'kendrickzou-portfolio-cache';
 const DEFAULT_VERSION = '1.0.0'
-const DOMAINS = ["kendrickzou.com", "localhost"]
+const DOMAINS = ["kendrickzou.com", "kherrisan.github.io", "localhost"]
 const PORTFOLIO_PACKAGE_NAME = "kendrickzou-portfolio"
 const PORTFOLIO_IMG_PACKAGE_NAME = "kendrickzou-portfolio-img"
 const VERSION_STORAGE_KEY = "kendrickzou-portfolio-version"
