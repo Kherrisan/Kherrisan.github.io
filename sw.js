@@ -1,17 +1,20 @@
-
 const CACHE_NAME = 'kendrickzou-portfolio-cache';
 const DEFAULT_VERSION = '1.0.0'
-const DOMAINS = ["kendrickzou.com", "kherrisan.github.io", "localhost"]
+const DOMAINS = ["kendrickzou.com", "www.kendrickzou.com", "kherrisan.github.io", "localhost"]
 const PORTFOLIO_PACKAGE_NAME = "kendrickzou-portfolio"
 const PORTFOLIO_IMG_PACKAGE_NAME = "kendrickzou-portfolio-img"
 const VERSION_STORAGE_KEY = "kendrickzou-portfolio-version"
 const DEFAULT_IMG_CDN = 'https://cdn.bilicdn.tk/npm'
+const CACHABLE_DOMAIN = [
+    'i1.hdslb.com',
+    'kendrickzou.com',
+    'www.kendrickzou.com',
+    'cdn.bilicdn.tk/npm',
+    'rsms.me',
+    'weibo.com',
+]
 
-let cachelist = [];
 self.cons = {
-    s: (m) => {
-        console.log(`%c[SUCCESS]%c ${m}`, 'color:white;background:green;', '')
-    },
     w: (m) => {
         console.log(`%c[WARNING]%c ${m}`, 'color:brown;background:yellow;', '')
     },
@@ -43,8 +46,7 @@ self.db = {
     write: (key, value) => {
         return new Promise((resolve, reject) => {
             caches.open(CACHE_NAME).then(function (cache) {
-                cache.put(new Request(`https://${DOMAINS[0]}/db/${encodeURIComponent(key)}`), new Response(value));
-                resolve()
+                cache.put(new Request(`https://${DOMAINS[0]}/db/${encodeURIComponent(key)}`), new Response(value)).then(resolve)
             }).catch(() => {
                 reject()
             })
@@ -57,14 +59,14 @@ self.addEventListener('install', async function (installEvent) {
     installEvent.waitUntil(
         caches.open(CACHE_NAME)
             .then(function (cache) {
-                self.cons.i('Opened cache');
+                cons.i('Opened cache');
             })
     );
 });
 
-self.addEventListener('fetch', async event => {
+self.addEventListener('fetch', event => {
     try {
-        event.respondWith(handle(event.request))
+        event.waitUntil(event.respondWith(handle(event.request)))
     } catch (msg) {
         event.respondWith(handleerr(event.request, msg))
     }
@@ -89,85 +91,148 @@ const timeout = (ms) => {
 }
 
 const fetchParallellyAndCache = async (urls, req) => {
-    const resp = await fetchParallelly(urls)
+    let resp = await fetchParallelly(urls, req)
     const cache = await caches.open(CACHE_NAME)
-    cache.put(req, resp.clone())
+    if (fullpath(req.url).match(/\.html$/)) {
+        resp = await generateHtml(resp)
+    }
+    await cache.put(req, resp.clone())
+    cons.d(`Fetched parallelly and cached: ${req.url}`)
     return resp
+}
+
+const fullpath = (path) => {
+    path = path.split('?')[0].split('#')[0]
+    if (path.match(/\/$/)) {
+        // is index page
+        path += 'index'
+    }
+    if (!path.match(/\.[a-zA-Z0-9]+$/)) {
+        // if doesn't have file extension like .html, .js
+        path += '.html'
+    }
+    return path
+}
+
+const generateHtml = async (res) => {
+    return new Response(await res.blob(), {
+        headers: {
+            'content-type': 'text/html; charset=utf-8'
+        },
+        status: res.status,
+        statusText: res.statusText
+    })
+}
+
+const shouldFetchParallelly = (req) => {
+    let url = new URL(req.url)
+    if (url.pathname.match(/\/sw\.js/g) || url.pathname.match('/va/script.js')) {
+        return false
+    }
+    for (let i = 0; i < cdnList.length; i++) {
+        if (url.origin === new URL(cdnList[i]).origin) {
+            // 是去往 NPM-CDN 的请求
+            return true
+        }
+    }
+    return DOMAINS.includes(url.hostname)
 }
 
 const handle = async function (req) {
     let url = new URL(req.url)
-    if (!DOMAINS.includes(url.hostname)
-        || url.pathname.match(/\/sw\.js/g)) {
-        return fetch(req)
+    if (!shouldFetchParallelly(req)) {
+        const resp = await fetch(req, { referrerPolicy: 'no-referrer' })
+        if (CACHABLE_DOMAIN.includes(url.hostname)) {
+            const cache = await caches.open(CACHE_NAME)
+            await cache.put(req, resp.clone())
+        }
+        return resp
+    }
+    if (url.pathname.match(/^\/api\//g)) {
+        // replace 'localhost:3000' or 'kendrickzou.com' with 'api.kendrickzou.com'
+        const resp = await fetch(url.href.replace(url.host, 'api.kendrickzou.com'))
+        return new Response(await resp.blob(), {
+            headers: resp.headers,
+            status: resp.status,
+            statusText: resp.statusText
+        })
+    }
+    url = new URL(fullpath(req.url))
+    if (url.pathname.indexOf('.html.json') !== -1) {
+        url.pathname = url.pathname.replace('.html', '')
     }
     let urls
-    if (url.pathname.match(/_next\/static/g)) {
-        url.pathname = url.pathname.replace(/_next\/static\//, "")
-        const version = await db.read(VERSION_STORAGE_KEY) || DEFAULT_VERSION
-        urls = cdnList.map(cdn => `${cdn}/${PORTFOLIO_PACKAGE_NAME}@${version}${url.pathname}${url.searchParams}`)
-    } else if (url.pathname.match(/_next\/image/g)) {
-        const cdnUrl = decodeURIComponent(url.href.match(/url=(.+?)$/).at(1)).split('&')[0]
-        const imgName = cdnUrl.match(/[\w-]+\.(jpg|png|jpeg|webp|heic|avif)/g)[0]
-        const width = url.href.split(/[&=]/)[3]
-        const transImgName = `${imgName.split('.')[0]}-${width}.${imgName.split('.')[1]}`
-        urls = cdnList.map(cdn => cdnUrl.split('&')[0].replace(DEFAULT_IMG_CDN, cdn).replace(imgName, transImgName))
+    if (url.pathname.match(/\/kendrickzou-portfolio-img/g)) {
+        urls = cdnList.map(cdn => url.href.replace(DEFAULT_IMG_CDN, cdn))
     } else {
-        return fetch(req)
+        const version = await db.read(VERSION_STORAGE_KEY) || DEFAULT_VERSION
+        urls = cdnList.map(cdn => `${cdn}/${PORTFOLIO_PACKAGE_NAME}@${version}${url.pathname}`)
     }
-    const resp = await caches.match(req)
-    if (!!resp) {
-        cons.i(`Cache hitted: ${req.url}`)
-        return resp;
-    }
-    cons.w(`Cache missed: ${req.url}`)
-    return fetchParallellyAndCache(urls, req)
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            caches.match(req).then(resp => {
+                if (!!resp) {
+                    cons.d(`Cache hitted: ${req.url}`)
+                    setTimeout(() => {
+                        cons.d(`Cache hitted and respond with cache: ${req.url}`)
+                        resolve(resp)
+                    }, 200)
+                    setTimeout(() => {
+                        fetchParallellyAndCache(urls, req).then(resolve)
+                    }, 0)
+                } else {
+                    cons.w(`Cache missed: ${req.url}`)
+                    setTimeout(() => {
+                        fetchParallellyAndCache(urls, req).then(resolve)
+                    }, 0)
+                    setTimeout(() => {
+                        // timeout
+                        if (url.pathname.match(/\.html$/)) {
+                            resolve(new Response(
+                                `<html><head> <meta charSet="utf-8" /></head><body> <div style="position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;width:auto;height:200px"> <h1 style="margin:0;text-align: center;">因为一些小问题，页面加载不出来啦......</h1> <p style="margin:0;text-align: center;">请尝试刷新浏览器，或者彻底清空这个域名站点下的缓存。</p> </div></body></html>`,
+                                { headers: { "content-type": "text/html; charset=utf-8" } }
+                            ))
+                        } else {
+                            reject()
+                        }
+                    }, 5000)
+                }
+            })
+        }, 0)
+    })
 }
 
-const fetchParallelly = async (urls) => {
-    cons.i(`Fetch parallelly: ${urls[0]}......`)
+const fetchParallelly = async (urls, req) => {
+    cons.d(`Start fetching parallelly: ${urls[0]}......`)
     let controller = new AbortController(); //针对此次请求新建一个AbortController,用于打断并发的其余请求
     const PauseProgress = async (res) => {
         //这个函数的作用时阻塞响应,直到主体被完整下载,避免被提前打断
-        return new Response(await (res).arrayBuffer(), { status: res.status, headers: res.headers });
+        return new Response(await res.blob(), { status: res.status, headers: res.headers });
     };
-    if (!Promise.any) { //Polyfill,避免Promise.any不存在,无需关注
-        Promise.any = function (promises) {
-            return new Promise((resolve, reject) => {
-                promises = Array.isArray(promises) ? promises : []
-                let len = promises.length
-                let errs = []
-                if (len === 0) return reject(new AggregateError('All promises were rejected'))
-                promises.forEach((promise) => {
-                    promise.then(value => {
-                        resolve(value)
-                    }, err => {
-                        len--
-                        errs.push(err)
-                        if (len === 0) {
-                            reject(new AggregateError(errs))
-                        }
-                    })
-                })
-            })
-        }
-    }
-    //并发请求
+
+    // 并发请求
     return Promise.any(urls.map(url => {
         return new Promise((resolve, reject) => {
-            fetch(url, {
-                signal: controller.signal//设置打断点
-            })
+            // 设置打断点
+            fetch(url, { signal: controller.signal })
                 .then(PauseProgress)//阻塞当前响应直到下载完成
                 .then(res => {
                     if (res.status == 200) {
-                        controller.abort()//打断其余响应(同时也打断了自己的,但本身自己已下载完成,打断无效)
-                        resolve(res)//返回
+                        // 打断其余响应(同时也打断了自己的,但本身自己已下载完成,打断无效)
+                        controller.abort()
+                        cons.d(`Fetch parallelly successfully from: ${url}, abort others.`)
+                        resolve(res)
                     } else {
+                        cons.e(`Error code ${res.status} for ${url}`)
                         reject(res)
                     }
                 })
-                .catch(err => { })
+                .catch(err => {
+                    if (typeof err == 'object' && err.name != 'AbortError') {
+                        cons.e(err)
+                        reject(err)
+                    }
+                })
         })
     }))
 }
@@ -185,7 +250,6 @@ const setNewestVersion = async () => {
     const registries = [
         `https://registry.npmjs.org/${PORTFOLIO_PACKAGE_NAME}/latest`,
     ]
-    cons.i(`Searching For The Newest Version...`)
     return fetchParallelly(registries)
         .then(res => res.json())
         .then(async res => {
@@ -194,8 +258,9 @@ const setNewestVersion = async () => {
             const remoteVersion = res.version
             cons.d(`Remote version: ${remoteVersion} ; Local version: ${localVersion} `)
             if (versionLarger(remoteVersion, localVersion)) {
-                cons.s(`Update blog version to remote version: ${remoteVersion}`);
+                cons.i(`Update blog version to remote version: ${remoteVersion}`);
                 await db.write(VERSION_STORAGE_KEY, remoteVersion)
+                // window.location.reload()
             }
         })
         .catch(e => {
