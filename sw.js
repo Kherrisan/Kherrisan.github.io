@@ -193,10 +193,8 @@ const versionLarger = (v1, v2) => {
 }
 
 const setNewestVersion = async () => {
-    const registries = [
-        `https://registry.npmjs.org/${PORTFOLIO_PACKAGE_NAME}/latest`,
-    ]
-    return fetchParallelly(registries)
+    const registries = `https://registry.npmjs.org/${PORTFOLIO_PACKAGE_NAME}/latest`
+    return fetch(registries)
         .then(res => res.json())
         .then(async res => {
             if (!res.version) throw ('No version found!')
