@@ -148,7 +148,8 @@ const handle = async function (req) {
     if (url.pathname.indexOf('.html.json') !== -1) {
         url.pathname = url.pathname.replace('.html', '')
     }
-    let rewrittenUrl = `${CDN_HOST}/${PORTFOLIO_PACKAGE_NAME}@${version}${url.pathname}`
+    const localVersion = await db.read(VERSION_STORAGE_KEY)
+    let rewrittenUrl = `${CDN_HOST}/${PORTFOLIO_PACKAGE_NAME}@${localVersion}${url.pathname}`
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             caches.match(req).then(resp => {
