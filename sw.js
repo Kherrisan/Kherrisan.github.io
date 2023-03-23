@@ -89,7 +89,11 @@ const fetchAndCache = async (url, req) => {
     if (fullpath(req.url).match(/\.html$/)) {
         resp = await generateHtml(resp)
     }
-    await cache.put(req, resp.clone())
+    try {
+        await cache.put(req, resp.clone())
+    } catch (error) {
+        cons.e(error)
+    }
     // cons.d(`Fetched parallelly and cached: ${req.url}`)
     return resp
 }
