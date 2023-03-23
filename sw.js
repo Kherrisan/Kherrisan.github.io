@@ -148,7 +148,7 @@ const handle = async function (req) {
     if (url.pathname.indexOf('.html.json') !== -1) {
         url.pathname = url.pathname.replace('.html', '')
     }
-    const localVersion = await db.read(VERSION_STORAGE_KEY)
+    const localVersion = await db.read(VERSION_STORAGE_KEY) ?? 'latest'
     let rewrittenUrl = `${CDN_HOST}/${PORTFOLIO_PACKAGE_NAME}@${localVersion}${url.pathname}`
     return new Promise((resolve, reject) => {
         setTimeout(() => {
