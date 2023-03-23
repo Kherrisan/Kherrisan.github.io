@@ -117,17 +117,17 @@ const generateHtml = async (res) => {
     })
 }
 
-const shouldRewriteToCdn = (req) => {
+const shouldRewrite = (req) => {
     let url = new URL(req.url)
     if (url.pathname.match(/\/sw\.js/g) || url.pathname.match('/va/script.js')) {
         return false
     }
-    return url.origin != new URL(CDN_HOST).origin && DOMAINS.includes(url.hostname)
+    return DOMAINS.includes(url.hostname) || (url.origin === new URL(CDN_HOST).origin && !url.pathname.match(/kendrickzou-portfolio/g))
 }
 
 const handle = async function (req) {
     let url = new URL(req.url)
-    if (!shouldRewriteToCdn(req)) {
+    if (!shouldRewrite(req)) {
         const resp = await fetch(req, { referrerPolicy: 'no-referrer' })
         if (CACHABLE_DOMAIN.includes(url.hostname)) {
             const cache = await caches.open(CACHE_NAME)
